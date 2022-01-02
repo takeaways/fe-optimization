@@ -77,31 +77,40 @@ HTML이 파싱이 되는 중간에 block 요소(CSS, JS)가 들어와서 파싱�
 # image optimization
 [이미지 사이즈 변환 사이트](https://squoosh.app/editor)
 ```jsx
-const imageRef = useRef(null);
-useEffect(()=>{
-	const callback = (entries,observer) => {
-		entries.forEach(entry => {
-			if(entry.isIntersecting){
-				entry.target.src = entry.target.dataset.src;
-				observer.unobserve(entry.target)
-			}
-		})
-	}
-	const options = {}
-	const observer = new IntersectionObserver(callback, options)	
-	observer.observe(imageRef.current)
-},[])
+import React, { useEffect, useRef } from 'react'
 
-...
-return (
-	<div  className="Card text-center">
-		<picture>
-			<source srcset={props.webp} type="image/webp"/>
-			<img ref={imageRef} data-src={props.image}/>
-		</picture>
-		<div className="p-5 font-semibold text-gray-700 text-xl md:text-lg lg:text-xl keep-all">
-			{props.children}
+function Card(props) {
+	const imageRef = useRef(null);
+	useEffect(()=>{
+		const callback = (entries,observer) => {
+			entries.forEach(entry => {
+				if(entry.isIntersecting){
+					const target = entry.target;
+					const sibling = target.previousSibling
+					sibling.srcset = sibling.dataset.srcset;
+					target.src = target.dataset.src;
+					observer.unobserve(entry.target)
+				}
+			})
+		}
+		const options = {}
+		const observer = new IntersectionObserver(callback, options)	
+		observer.observe(imageRef.current)
+	},[])
+
+	return (
+		<div  className="Card text-center">
+			<picture>
+				<source data-srcset={props.webp} type="image/webp"/>
+				<img ref={imageRef} data-src={props.image}/>
+			</picture>
+			<div className="p-5 font-semibold text-gray-700 text-xl md:text-lg lg:text-xl keep-all">
+				{props.children}
+			</div>
 		</div>
-	</div>
-)
+	)
+}
+
+export default Card
+
 ```
