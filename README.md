@@ -1,6 +1,6 @@
 # 프런트 성능
 ## 로딩 최적화
-### 1. 브라우저 기준 최적화의 문제점
+### 1. 브라우저 기준 최적화의 문제점Cancel changes
 - Navigation Timing
 ![](https://images.velog.io/images/jgi0105/post/ef68ae7d-de7b-4c12-8438-4ad783cf74bd/image.png)
 - processing && load 이 두 이벤트를 앞 단기고 빨리하는데 목표가 있다.
@@ -75,6 +75,7 @@ HTML이 파싱이 되는 중간에 block 요소(CSS, JS)가 들어와서 파싱�
 
 
 # image optimization
+![이미지 사이즈 변환 사이트](https://squoosh.app/editor)
 ```jsx
 const imageRef = useRef(null);
 useEffect(()=>{
