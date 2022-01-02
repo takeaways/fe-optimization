@@ -72,3 +72,20 @@ HTML이 파싱이 되는 중간에 block 요소(CSS, JS)가 들어와서 파싱�
 자바스크립트 코드가 10ms에 끝나야 한다.
 
 [참고](https://www.youtube.com/watch?v=G1IWq2blu8c)
+
+
+```jsx
+const imageRef = useRef(null);
+useEffect(()=>{
+	const callback = (entries,observer) => {
+		entries.forEach(entry => {
+			if(entry.isIntersecting){
+				observer.unobserve(entry.target)
+			}
+		})
+	}
+	const options = {}
+	const observer = new IntersectionObserver(callback, options)
+	observer.observe(imageRef.current)
+},[])
+```
