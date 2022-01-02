@@ -74,6 +74,7 @@ HTML이 파싱이 되는 중간에 block 요소(CSS, JS)가 들어와서 파싱�
 [참고](https://www.youtube.com/watch?v=G1IWq2blu8c)
 
 
+# image optimization
 ```jsx
 const imageRef = useRef(null);
 useEffect(()=>{
