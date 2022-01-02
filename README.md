@@ -75,7 +75,7 @@ HTML이 파싱이 되는 중간에 block 요소(CSS, JS)가 들어와서 파싱�
 
 
 # image optimization
-![이미지 사이즈 변환 사이트](https://squoosh.app/editor)
+[이미지 사이즈 변환 사이트](https://squoosh.app/editor)
 ```jsx
 const imageRef = useRef(null);
 useEffect(()=>{
